@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".View.ActividadActivity">
+
+    <TextView
+        android:id="@+id/labNameActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Titulo" />
+
+    <EditText
+        android:id="@+id/txtNombreActividad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/labDetalleActividad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Detalle :" />
+
+    <EditText
+        android:id="@+id/txtDetalleActividad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        />
+
+    <TextView
+        android:id="@+id/labHoraInicio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hora de Inicio :" />
+
+    <EditText
+        android:id="@+id/txtHoraInicio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="time"
+        />
+
+    <TextView
+        android:id="@+id/labHoraFinal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hora Salida :" />
+
+    <EditText
+        android:id="@+id/txtHoraFinal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="time" />
+
+    <TextView
+        android:id="@+id/labFecha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fecha : " />
+
+    <EditText
+        android:id="@+id/txtFecha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="date" />
+
+    <Button
+        android:id="@+id/btnSaveActividad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrar Actividad" />
+</LinearLayout>

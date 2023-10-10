@@ -6,4 +6,58 @@
     android:layout_height="match_parent"
     tools:context=".View.AUsuario">
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        tools:layout_editor_absoluteX="160dp"
+        tools:layout_editor_absoluteY="523dp" />
+
+    <EditText
+        android:id="@+id/phoneText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="celular"
+        android:inputType="phone"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="355dp" />
+
+    <EditText
+        android:id="@+id/nameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="nombre"
+        android:inputType="text"
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="149dp" />
+
+    <EditText
+        android:id="@+id/ciText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="cedula identidad"
+        android:inputType="text"
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="71dp" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="168dp"
+        tools:layout_editor_absoluteY="284dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Miembro"
+        tools:layout_editor_absoluteX="75dp"
+        tools:layout_editor_absoluteY="297dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

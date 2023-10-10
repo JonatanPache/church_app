@@ -1,7 +1,7 @@
 package com.jonatan.church.Controller;
 
-public interface IUsuarioController {
+public interface IPersonaController {
 
-    void registrarVisita();
+    void save();
     void registrarMiembro();
 }
