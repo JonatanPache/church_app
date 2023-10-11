@@ -6,6 +6,8 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import androidx.annotation.Nullable;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class DbActividad extends DbHelper{
@@ -32,7 +34,14 @@ public class DbActividad extends DbHelper{
             values.put("nombre", nombre);
             values.put("descripcion", descripcion);
             values.put("fecha_inicio", fecha_inicio);
-            values.put("fecha_final", fecha_final);
+            values.put("fecha_final", fecha_final);// Obtén la fecha y hora actual
+            Calendar calendar = Calendar.getInstance();
+            // Especifica el formato de fecha deseado
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            // Convierte la fecha actual al formato deseado
+            String fechaActual = dateFormat.format(calendar.getTime());
+            values.put("created_at", fechaActual);
+            values.put("updated_at", fechaActual);
             return db.insert("Actividad", null, values);
         }catch (SQLException e){
             e.getMessage();

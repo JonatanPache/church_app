@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Church"
         tools:targetApi="31">
         <activity
+            android:name=".View.RelacionFamiliar_Activity"
+            android:exported="false" />
+        <activity
             android:name=".View.ActividadActivity"
             android:exported="false" />
         <activity

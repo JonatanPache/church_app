@@ -4,14 +4,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
-public class DbPersona extends DbHelper{
+public class DbRelacionFamiliar extends DbHelper{
 
     Context context;
     /**
@@ -22,7 +18,7 @@ public class DbPersona extends DbHelper{
      *
      * @param context to use for locating paths to the the database
      */
-    public DbPersona(@Nullable Context context) {
+    public DbRelacionFamiliar(@Nullable Context context) {
         super(context);
         this.context = context;
     }
@@ -36,14 +32,6 @@ public class DbPersona extends DbHelper{
             values.put("nombre", nombre);
             values.put("phone", phone);
             values.put("rol", rol);
-            // Obtén la fecha y hora actual
-            Calendar calendar = Calendar.getInstance();
-            // Especifica el formato de fecha deseado
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            // Convierte la fecha actual al formato deseado
-            String fechaActual = dateFormat.format(calendar.getTime());
-            values.put("created_at", fechaActual);
-            values.put("updated_at", fechaActual);
             return db.insert("Persona", null, values);
         }catch (SQLException e){
             e.getMessage();

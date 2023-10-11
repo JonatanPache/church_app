@@ -62,13 +62,26 @@
         android:inputType="time" />
 
     <TextView
-        android:id="@+id/labFecha"
+        android:id="@+id/labFechaInicio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Fecha : " />
+        android:text="Fecha Inicio: " />
 
     <EditText
-        android:id="@+id/txtFecha"
+        android:id="@+id/txtFechaInicio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="date" />
+
+    <TextView
+        android:id="@+id/labFechaFinal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fecha Final: " />
+
+    <EditText
+        android:id="@+id/txtFechaFinal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"

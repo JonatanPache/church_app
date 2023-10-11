@@ -1,6 +1,7 @@
 package com.jonatan.church.Model;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.jonatan.church.db.DbActividad;
@@ -55,6 +56,14 @@ public class Actividad implements IActividad{
 
     @Override
     public int isValido() {
-        return 0;
+        if (TextUtils.isEmpty( getNombre() ) ) {
+            return 0;
+        } else if (TextUtils.isEmpty( getDescripcion())) {
+            return 1;
+        } else if ( TextUtils.isEmpty(getFechaFinal())) {  // fecha no existe
+            return 2;
+        } else {
+            return -1;
+        }
     }
 }

@@ -32,17 +32,92 @@ public class DbHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE IF NOT EXISTS TipoRelacionFamiliar ("+
+                "id INTEGER PRIMARY KEY AUTOINCREMENT,"+
+                "nombre TEXT NOT NULL ,"+
+                "created_at DATETIME NOT NULL ,"+
+                "updated_at DATETIME NOT NULL)");
+
+        db.execSQL("CREATE TABLE IF NOT EXISTS Cargo ("+
+                "id INTEGER PRIMARY KEY AUTOINCREMENT,"+
+                "nombre TEXT NOT NULL ,"+
+                "descripcion TEXT ,"+
+                "created_at DATETIME NOT NULL ,"+
+                "updated_at DATETIME NOT NULL)");
+
+        db.execSQL("CREATE TABLE IF NOT EXISTS Ingreso ("+
+                "id INTEGER PRIMARY KEY AUTOINCREMENT,"+
+                "nombre TEXT NOT NULL ,"+
+                "descripcion TEXT ,"+
+                "created_at DATETIME NOT NULL ,"+
+                "updated_at DATETIME NOT NULL)");
+
         db.execSQL("CREATE TABLE IF NOT EXISTS Persona ("+
                 "ci INTEGER PRIMARY KEY NOT NULL,"+
                 "nombre TEXT NOT NULL,"+
                 "phone TEXT ,"+
-                "rol INTEGER DEFAULT 0)");
+                "rol TEXT DEFAULT 'VISITANTE',"+
+                "created_at DATETIME NOT NULL ,"+
+                "updated_at DATETIME NOT NULL)");
+
         db.execSQL("CREATE TABLE IF NOT EXISTS Actividad ("+
                 "id INTEGER PRIMARY KEY AUTOINCREMENT,"+
                 "nombre TEXT NOT NULL,"+
                 "descripcion TEXT NOT NULL,"+
                 "fecha_inicio DATETIME NOT NULL ,"+
-                "fecha_final DATETIME NOT NULL )");
+                "fecha_final DATETIME NOT NULL , "+
+                "created_at DATETIME NOT NULL ,"+
+                "updated_at DATETIME NOT NULL)");
+
+        db.execSQL("CREATE TABLE IF NOT EXISTS RelacionFamiliar ("+
+                "ci_persona_1 INTEGER NOT NULL,"+
+                "ci_persona_2 INTEGER NOT NULL,"+
+                "tipo_relacion_id INTEGER NOT NULL,"+
+                "created_at DATETIME NOT NULL ,"+
+                "updated_at DATETIME NOT NULL,"+
+                "FOREIGN KEY (ci_persona_1) REFERENCES Persona(ci)," +
+                "FOREIGN KEY (ci_persona_2) REFERENCES Persona(ci), "+
+                "FOREIGN KEY (tipo_relacion_id) REFERENCES TipoRelacionFamiliar(id))");
+
+        db.execSQL("CREATE TABLE IF NOT EXISTS AsignaCargo ("+
+                "persona_id INTEGER NOT NULL ,"+
+                "cargo_id INTEGER NOT NULL ,"+
+                "fecha_inicio DATETIME NOT NULL ,"+
+                "fecha_final DATETIME NOT NULL , "+
+                "estado INTEGER DEFAULT 1,"+
+                "created_at DATETIME NOT NULL ,"+
+                "updated_at DATETIME NOT NULL,"+
+                "FOREIGN KEY (persona_id) REFERENCES Persona(ci)," +
+                "FOREIGN KEY (cargo_id) REFERENCES Cargo(id) )");
+
+        db.execSQL("CREATE TABLE IF NOT EXISTS Visita ("+
+                "ci_persona_1 INTEGER NOT NULL,"+
+                "ci_persona_2 INTEGER NOT NULL,"+
+                "tipo_relacion_id INTEGER NOT NULL,"+
+                "created_at DATETIME NOT NULL ,"+
+                "updated_at DATETIME NOT NULL,"+
+                "FOREIGN KEY (ci_persona_1) REFERENCES Persona(ci)," +
+                "FOREIGN KEY (ci_persona_2) REFERENCES Persona(ci), "+
+                "FOREIGN KEY (tipo_relacion_id) REFERENCES TipoRelacionFamiliar(id))");
+
+        db.execSQL("CREATE TABLE IF NOT EXISTS NotaIngreso ("+
+                "id INTEGER PRIMARY KEY AUTOINCREMENT,"+
+                "actividad_id INTEGER NOT NULL ,"+
+                "titulo TEXT NOT NULL ,"+
+                "total INTEGER NOT NULL ,"+
+                "created_at DATETIME NOT NULL ,"+
+                "updated_at DATETIME NOT NULL,"+
+                "FOREIGN KEY (actividad_id) REFERENCES Actividad(id))");
+
+        db.execSQL("CREATE TABLE IF NOT EXISTS DetalleIngreso ("+
+                "id INTEGER PRIMARY KEY AUTOINCREMENT,"+
+                "nota_ingreso_id INTEGER NOT NULL ,"+
+                "ingreso_id INTEGER NOT NULL ,"+
+                "monto INTEGER NOT NULL ,"+
+                "created_at DATETIME NOT NULL ,"+
+                "updated_at DATETIME NOT NULL ,"+
+                "FOREIGN KEY (nota_ingreso_id) REFERENCES NotaIngreso(id),"+
+                "FOREIGN KEY (ingreso_id) REFERENCES Ingreso(id))");
     }
 
     /**

@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.chip.Chip;
@@ -23,6 +25,7 @@ public class PersonaActivity extends AppCompatActivity implements IPersonaView {
     IPersonaController personaController;
     Button btnSave;
     EditText txtName, txtCi, txtPhone;
+    TextView labPhone;
     Chip chk;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +39,23 @@ public class PersonaActivity extends AppCompatActivity implements IPersonaView {
         txtCi = (EditText) findViewById(R.id.txtCi);
         txtName = (EditText)findViewById(R.id.txtNombre);
         txtPhone = (EditText) findViewById(R.id.txtPhone);
+        labPhone = findViewById(R.id.labPhone);
         chk = (Chip) findViewById(R.id.chip);
+
+        chk.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    txtPhone.setVisibility(View.VISIBLE);
+                    labPhone.setVisibility(View.VISIBLE);
+                    txtPhone.setEnabled(true);
+                }else{
+                    txtPhone.setVisibility(View.INVISIBLE);
+                    labPhone.setVisibility(View.INVISIBLE);
+                    txtPhone.setEnabled(false);
+                }
+            }
+        });
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,7 +74,6 @@ public class PersonaActivity extends AppCompatActivity implements IPersonaView {
             userData.put("phone", txtPhone.getText().toString());
         }
         return userData;
-
     }
 
     @Override

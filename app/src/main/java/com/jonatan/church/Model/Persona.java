@@ -30,18 +30,8 @@ public class Persona implements IPersona {
         this.phone = null;
         this.dbPersona = new DbPersona(context);
     }
-    public long saveVisita(){
+    public long save(){
         return this.dbPersona.insertPersona(getCi(),getNombre(),getPhone(),getRol());
-//        ContentValues values = new ContentValues();
-//        values.put("ci",getCi());
-//        values.put("nombre",getNombre());
-//        values.put("phone",getPhone());
-//        values.put("rol",getRol());
-//
-//        db.insert("Persona",null, values);
-    }
-    public int saveMiembro(){
-        return 0;
     }
       @Override
     public String getNombre() {

@@ -7,31 +7,35 @@ import com.jonatan.church.View.IPersonaView;
 
 public class PersonaController implements IPersonaController {
     private Persona persona;    //model
-    private IPersonaView usuarioView;    //view
-    public PersonaController(IPersonaView usuarioView){
-        this.usuarioView = usuarioView;
-        this.persona =  new Persona(usuarioView.getContext());
+    private IPersonaView personaView;    //view
+    public PersonaController(IPersonaView personaView){
+        this.personaView = personaView;
+        this.persona =  new Persona(personaView.getContext());
     }
 
     @Override
     public void save() {
-        persona.setData(usuarioView.getData());
+        persona.setData(personaView.getData());
         int codeSave = persona.isValido();
         if (codeSave == 0){ // le falta nombre
-            usuarioView.OnSaveError(" Por favor ingrese CI correcto");
+            personaView.OnSaveError(" Por favor ingrese CI correcto");
         } else if (codeSave == 1) {
-            usuarioView.OnSaveError("Por favor ingrese nombre");
+            personaView.OnSaveError("Por favor ingrese nombre");
         } else if (codeSave == 2){
-            usuarioView.OnSaveError("Please enter phone");
+            personaView.OnSaveError("Please enter phone");
         } else if ( codeSave == -1){ // es miembro
-            persona.saveMiembro();
-            usuarioView.OnSaveSuccess("Create persona Successful");
+            long code = persona.save();
+            if (code == -1) {
+                personaView.OnSaveError("Miembro con Duplicado CI");
+            } else {
+                personaView.OnSaveSuccess("Miembro creado");
+            }
         } else {    // es visita
-            long code = persona.saveVisita();
+            long code = persona.save();
             if(code == -1){// code==-1 constrain
-                usuarioView.OnSaveError("Persona con CI duplicado");
+                personaView.OnSaveError("Persona Visitante con CI duplicado");
             }else{  //code==0 ok
-                usuarioView.OnSaveSuccess("Persona Creada");
+                personaView.OnSaveSuccess("Persona Visitante Creada");
             }
 
         }

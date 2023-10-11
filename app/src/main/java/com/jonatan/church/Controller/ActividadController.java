@@ -14,9 +14,15 @@ public class ActividadController implements IActividadController{
     public void save() {
         this.actividad.setData(actividadView.getData());
         int codeSave = this.actividad.isValido();
-        if (codeSave == 0){ // le falta nombre
+        if (codeSave == 0) { // nombre vacio
+            this.actividadView.OnSaveError("Ingrese un Nombre");
+        } else if (codeSave == 1) { //descripcion vacio
+            this.actividadView.OnSaveError("Ingrese una descripcion");
+        } else if (codeSave == 2) { // fecha no ingresada
+            this.actividadView.OnSaveError("Ingrese la fecha de la actividad");
+        } else {
             this.actividad.save();
-            this.actividadView.OnSaveSuccess("Actividad Creada");
+            this.actividadView.OnSaveSuccess("Actvidad creada exitosamente");
         }
     }
 }

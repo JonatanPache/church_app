@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".View.RelacionFamiliar_Activity">
+
+    <TextView
+        android:id="@+id/labCIPersona1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CI Miembro o Visita" />
+
+    <EditText
+        android:id="@+id/txtCIPersona1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/labTipoRelacionFamiliar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tipo de Relacion Familiar :" />
+
+    <EditText
+        android:id="@+id/txtTipoRelacionFamiliar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        />
+
+    <TextView
+        android:id="@+id/labCIPersona2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CI Miembro 2 :" />
+
+    <EditText
+        android:id="@+id/txtCIPersona2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textAutoComplete"
+        />
+
+    <Button
+        android:id="@+id/btnSaveRelacionFamiliar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrar Relacion Familiar" />
+
+</LinearLayout>

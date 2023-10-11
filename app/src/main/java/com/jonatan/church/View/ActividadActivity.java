@@ -23,7 +23,7 @@ import java.util.Map;
 import java.util.TimeZone;
 
 public class ActividadActivity extends AppCompatActivity implements IActividadView{
-    EditText txtName, txtDetalle, txtHoraStart,txtHoraEnd,txtDate;
+    EditText txtName, txtDetalle, txtHoraStart, txtHoraEnd, txtDateInicio, txtDateFinal;
     Button btnSave;
     IActividadController actividadController;
     @Override
@@ -37,7 +37,8 @@ public class ActividadActivity extends AppCompatActivity implements IActividadVi
         txtDetalle = findViewById(R.id.txtDetalleActividad);
         txtHoraStart = findViewById(R.id.txtHoraInicio);
         txtHoraEnd = findViewById(R.id.txtHoraFinal);
-        txtDate = findViewById(R.id.txtFecha);
+        txtDateInicio = findViewById(R.id.txtFechaInicio);
+        txtDateFinal = findViewById(R.id.txtFechaFinal);
         btnSave = findViewById(R.id.btnSaveActividad);
 
         btnSave.setOnClickListener(new View.OnClickListener() {
@@ -54,7 +55,8 @@ public class ActividadActivity extends AppCompatActivity implements IActividadVi
         userData.put("nombre", txtName.getText().toString());
         userData.put("descripcion", txtDetalle.getText().toString());
 
-        String fechaStr = txtDate.getText().toString();
+        String fechaStartStr = txtDateInicio.getText().toString();
+        String fechaEndStr = txtDateFinal.getText().toString();
         String horaStartStr = txtHoraStart.getText().toString();
         String horaEndStr = txtHoraEnd.getText().toString();
         try {
@@ -64,18 +66,24 @@ public class ActividadActivity extends AppCompatActivity implements IActividadVi
             dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
             timeFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
 
-            Date fecha = dateFormat.parse(fechaStr);
+            Date fechaStart = dateFormat.parse(fechaStartStr);
+            Date fechaEnd = dateFormat.parse(fechaEndStr);
             Date horaStart = timeFormat.parse(horaStartStr);
             Date horaEnd = timeFormat.parse(horaEndStr);
 
             Calendar calendar = Calendar.getInstance();
-            calendar.setTime(fecha);
+            Calendar calendarE = Calendar.getInstance();
+            calendar.setTime(fechaStart);
+            calendar.set(Calendar.HOUR_OF_DAY, 0);
+            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.SECOND, 0);
+            calendar.setTime(fechaEnd);
             calendar.set(Calendar.HOUR_OF_DAY, 0);
             calendar.set(Calendar.MINUTE, 0);
             calendar.set(Calendar.SECOND, 0);
 
             Date datetimeStart = new Date(calendar.getTimeInMillis() + horaStart.getTime());
-            Date datetimeEnd = new Date(calendar.getTimeInMillis() + horaEnd.getTime());
+            Date datetimeEnd = new Date(calendarE.getTimeInMillis() + horaEnd.getTime());
 
             SimpleDateFormat datetimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
             String datetimeStartStr = datetimeFormat.format(datetimeStart);

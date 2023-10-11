@@ -11,6 +11,5 @@ public interface IPersona {
     void updateTipoUsuario();
     int isValido();
     void setData(Map<String, Object> data);
-    long saveVisita();
-    int saveMiembro();
+    long save();
 }
