@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".View.RelacionFamiliar_Activity">
+    tools:context=".View.RelacionFamiliarActivity">
 
     <TextView
         android:id="@+id/labCIPersona1"
@@ -20,19 +20,22 @@
         android:ems="10"
         android:inputType="text" />
 
-    <TextView
-        android:id="@+id/labTipoRelacionFamiliar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tipo de Relacion Familiar :" />
+<!--    <TextView-->
+<!--        android:id="@+id/labTipoRelacionFamiliar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Tipo de Relacion Familiar :" />-->
 
-    <EditText
-        android:id="@+id/txtTipoRelacionFamiliar"
+<!--    <EditText-->
+<!--        android:id="@+id/txtTipoRelacionFamiliar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:ems="10"-->
+<!--        android:inputType="text" />-->
+    <Spinner
+        android:id="@+id/tipoRelacionSpinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        />
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/labCIPersona2"
@@ -45,8 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textAutoComplete"
-        />
+        android:inputType="text" />
 
     <Button
         android:id="@+id/btnSaveRelacionFamiliar"

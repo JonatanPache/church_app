@@ -13,7 +13,10 @@
         android:theme="@style/Theme.Church"
         tools:targetApi="31">
         <activity
-            android:name=".View.RelacionFamiliar_Activity"
+            android:name=".View.TipoRelacionFamiliarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.RelacionFamiliarActivity"
             android:exported="false" />
         <activity
             android:name=".View.ActividadActivity"
@@ -37,9 +40,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".View.AUsuario"
-            android:exported="false" />
     </application>
 
 </manifest>

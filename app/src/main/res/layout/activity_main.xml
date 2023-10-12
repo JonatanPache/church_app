@@ -22,4 +22,21 @@
         android:text="Actividad"
         tools:layout_editor_absoluteX="74dp"
         tools:layout_editor_absoluteY="60dp" />
+
+    <Button
+        android:id="@+id/btnTipoRelacionFamiliar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tipo Relacion Familiar"
+        tools:layout_editor_absoluteX="74dp"
+        tools:layout_editor_absoluteY="60dp" />
+
+    <Button
+        android:id="@+id/btnRelacionFamiliar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Relacion Familiar"
+        tools:layout_editor_absoluteX="74dp"
+        tools:layout_editor_absoluteY="60dp" />
+
 </LinearLayout>
